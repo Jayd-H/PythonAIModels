@@ -34,7 +34,7 @@ feature_importances = np.abs(poly_regressor.coef_[0])
 plt.figure(figsize=(14, 6))
 
 # Scatter plot of actual vs predicted values
-ax1 = plt.subplot(1, 2, 1)  # 1 row, 2 columns, 1st subplot
+ax1 = plt.subplot(1, 2, 1) 
 plt.scatter(y_test, y_pred, color='blue')
 plt.xlabel('Actual Sale Prices')
 plt.ylabel('Predicted Sale Prices')
@@ -49,12 +49,12 @@ ax1.text(0.05, 0.95, textstr, transform=ax1.transAxes, fontsize=12,
          verticalalignment='top', bbox=props)
 
 # Feature Importance Plot
-ax2 = plt.subplot(1, 2, 2)  # 1 row, 2 columns, 2nd subplot
-sorted_idx = np.argsort(feature_importances)[-10:]  # Get indices of top 10 features
+ax2 = plt.subplot(1, 2, 2) 
+sorted_idx = np.argsort(feature_importances)[-10:]  
 plt.barh(range(10), feature_importances[sorted_idx], color='blue')
 plt.xlabel('Feature Importance (Coefficient Magnitude)')
 plt.title('Top 10 Most Important Features (Polynomial Regression)')
 plt.yticks(range(10), poly.get_feature_names_out()[sorted_idx])
 
-plt.tight_layout()  # Adjust the layout
+plt.tight_layout() 
 plt.show()
