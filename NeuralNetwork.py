@@ -17,7 +17,7 @@ model = Sequential([
     Dense(10, activation='relu', input_shape=(X_train.shape[1],)),
     Dense(10, activation='relu'),
     Dense(10, activation='relu'),
-    Dense(1, activation='linear'),  # 'linear' for regression output
+    Dense(1, activation='linear'),
 ])
 
 # Compile the model with Adam optimizer and mean squared error loss

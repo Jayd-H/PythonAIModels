@@ -30,7 +30,6 @@ mse = mean_squared_error(y_test, y_pred)
 # Get feature importance (coefficients) from the polynomial regressor
 feature_importances = np.abs(poly_regressor.coef_[0])
 
-# Start subplots
 plt.figure(figsize=(14, 6))
 
 # Scatter plot of actual vs predicted values
