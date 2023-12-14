@@ -48,15 +48,19 @@ ames_dataset_preprocessed = pd.concat([ames_dataset.drop(columns=categorical_col
 scaler = MinMaxScaler()
 ames_dataset_preprocessed[numerical_cols] = scaler.fit_transform(ames_dataset_preprocessed[numerical_cols])
 
-# Data Splitting
-X_train, X_test, y_train, y_test = train_test_split(ames_dataset_preprocessed, y, test_size=0.2, random_state=42)
+# Data Splitting into train, dev, and test sets
+X_temp, X_test, y_temp, y_test = train_test_split(ames_dataset_preprocessed, y, test_size=0.2, random_state=42)
+X_train, X_dev, y_train, y_dev = train_test_split(X_temp, y_temp, test_size=0.25, random_state=42)  # 0.25 x 0.8 = 0.2
 
 # Save the split datasets to files
 X_train.to_csv('X_train.csv', index=False)
+X_dev.to_csv('X_dev.csv', index=False)   # Saving the development set
 X_test.to_csv('X_test.csv', index=False)
 y_train.to_csv('y_train.csv', index=False)
+y_dev.to_csv('y_dev.csv', index=False)   # Saving the development set
 y_test.to_csv('y_test.csv', index=False)
-print("Split Files")
+
+print("Split Files Saved")
 
 # Save the preprocessed dataset (without the target variable)
 ames_dataset_preprocessed.to_csv('ProcessedDataset.csv', index=False)
