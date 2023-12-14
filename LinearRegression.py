@@ -33,8 +33,6 @@ realistic_y_test = ytestdataset[realistic_prediction_mask.ravel()]
 # Evaluate the model on the realistic predictions
 r2 = r2_score(realistic_y_test, realistic_y_pred)
 mse = mean_squared_error(realistic_y_test, realistic_y_pred)
-print(f'\nR² Score: {r2}')
-print(f'Mean Squared Error: {mse}')
 
 # Graphs !!!
 feature_importances = pd.Series(np.abs(regressor.coef_[0]), index=xtraindataset.columns)
@@ -42,7 +40,7 @@ feature_importances = pd.Series(np.abs(regressor.coef_[0]), index=xtraindataset.
 plt.figure(figsize=(20, 6))
 
 # Scatter plot of actual vs predicted values
-plt.subplot(1, 3, 1)  # Changed to 1 row, 3 columns, position 1
+ax1 = plt.subplot(1, 3, 1) 
 plt.scatter(ytestdataset, y_pred)
 plt.xlabel('Actual Sale Prices')
 plt.ylabel('Predicted Sale Prices')
@@ -50,20 +48,22 @@ plt.title('Actual vs Predicted Sale Prices')
 plt.plot([ytestdataset.min(), ytestdataset.max()], [ytestdataset.min(), ytestdataset.max()], 'k--', lw=4)
 
 # Scatter plot of actual vs predicted values excluding extremes
-plt.subplot(1, 3, 2)  # Changed to 1 row, 3 columns, position 2
+ax2 = plt.subplot(1, 3, 2)  
 plt.scatter(realistic_y_test, realistic_y_pred)
 plt.xlabel('Actual Sale Prices')
 plt.ylabel('Predicted Sale Prices')
 plt.title('Actual vs Predicted Sale Prices (Excluding Extremes)')
 plt.plot([realistic_y_test.min(), realistic_y_test.max()], [realistic_y_test.min(), realistic_y_test.max()], 'k--', lw=4)
+plt.text(0.05, 0.95, f'R² Score: {r2:.2f}\nMSE: {mse:.2e}', transform=ax2.transAxes,
+         fontsize=12, verticalalignment='top', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
 # Bar chart for feature importances
-plt.subplot(1, 3, 3)  # Changed to 1 row, 3 columns, position 3
-feature_importances.nlargest(10).plot(kind='barh')  # You can adjust the number of features shown
+plt.subplot(1, 3, 3) 
+feature_importances.nlargest(10).plot(kind='barh')  
 plt.title('Top 10 Most Important Features Affecting House Prices')
 plt.xlabel('Coefficient Value')
 plt.ylabel('Feature')
 
-plt.tight_layout()  # This will adjust spacing to fit the figure area
+plt.tight_layout()  
 plt.show()
 
