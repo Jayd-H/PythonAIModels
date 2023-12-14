@@ -6,10 +6,10 @@ from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 
 # Load the dataset
-x_train = pd.read_csv('X_train.csv')
-y_train = pd.read_csv('y_train.csv')
-x_test = pd.read_csv('X_test.csv')
-y_test = pd.read_csv('y_test.csv')
+x_train = pd.read_csv('Splits/X_train.csv')
+y_train = pd.read_csv('Splits/y_train.csv')
+x_test = pd.read_csv('Splits/X_test.csv')
+y_test = pd.read_csv('Splits/y_test.csv')
 
 # Generate polynomial and interaction features
 poly = PolynomialFeatures(degree=2, include_bias=False)

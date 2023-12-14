@@ -5,12 +5,12 @@ from tensorflow.keras.optimizers import Adam
 import matplotlib.pyplot as plt
 
 # Load the split datasets
-X_train = pd.read_csv('X_train.csv')
-y_train = pd.read_csv('y_train.csv')
-X_dev = pd.read_csv('X_dev.csv')
-y_dev = pd.read_csv('y_dev.csv')
-X_test = pd.read_csv('X_test.csv')
-y_test = pd.read_csv('y_test.csv')
+X_train = pd.read_csv('Splits/X_train.csv')
+y_train = pd.read_csv('Splits/y_train.csv')
+X_dev = pd.read_csv('Splits/X_dev.csv')
+y_dev = pd.read_csv('Splits/y_dev.csv')
+X_test = pd.read_csv('Splits/X_test.csv')
+y_test = pd.read_csv('Splits/y_test.csv')
 
 # Define the neural network architecture
 model = Sequential([

@@ -5,10 +5,10 @@ from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 
 # Load the dataset
-xtraindataset = pd.read_csv('X_train.csv')
-ytraindataset = pd.read_csv('Y_train.csv')
-xtestdataset = pd.read_csv('X_test.csv')
-ytestdataset = pd.read_csv('Y_test.csv')
+xtraindataset = pd.read_csv('Splits/X_train.csv')
+ytraindataset = pd.read_csv('Splits/Y_train.csv')
+xtestdataset = pd.read_csv('Splits/X_test.csv')
+ytestdataset = pd.read_csv('Splits/Y_test.csv')
 
 # Linear Regression Model
 regressor = LinearRegression()

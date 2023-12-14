@@ -4,7 +4,7 @@ from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 from sklearn.model_selection import train_test_split
 
 # Load the dataset
-ames_dataset = pd.read_csv('UnprocessedDataset.csv')
+ames_dataset = pd.read_csv('FullDatasets/UnprocessedDataset.csv')
 
 # Calculate the percentage of missing values for each column
 missing_percentage = ames_dataset.isnull().mean() * 100
@@ -44,15 +44,15 @@ X_temp, X_test, y_temp, y_test = train_test_split(ames_dataset_preprocessed, y, 
 X_train, X_dev, y_train, y_dev = train_test_split(X_temp, y_temp, test_size=0.25, random_state=42)
 
 
-X_train.to_csv('X_train.csv', index=False)
-X_dev.to_csv('X_dev.csv', index=False)   
-X_test.to_csv('X_test.csv', index=False)
-y_train.to_csv('y_train.csv', index=False)
-y_dev.to_csv('y_dev.csv', index=False)   
-y_test.to_csv('y_test.csv', index=False)
+X_train.to_csv('Splits/X_train.csv', index=False)
+X_dev.to_csv('Splits/X_dev.csv', index=False)   
+X_test.to_csv('Splits/X_test.csv', index=False)
+y_train.to_csv('Splits/y_train.csv', index=False)
+y_dev.to_csv('Splits/y_dev.csv', index=False)   
+y_test.to_csv('Splits/y_test.csv', index=False)
 
 print("Split Files Saved")
 
-ames_dataset_preprocessed.to_csv('ProcessedDataset.csv', index=False)
+ames_dataset_preprocessed.to_csv('FullDatasets/ProcessedDataset.csv', index=False)
 print("Saved CSV")
 
